@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/brightonlocalbusiness/precache-manifest.d47a51c93a6ffd76fb0f975d14cbe5d5.js"
+  "/brightonlocalbusiness/precache-manifest.7facde43d46780f5511224d5aa4d8070.js"
 );
 
 self.addEventListener('message', (event) => {
