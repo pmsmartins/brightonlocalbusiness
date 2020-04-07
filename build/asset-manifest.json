@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/brightonlocalbusiness/static/css/main.7df92152.chunk.css",
+    "main.js": "/brightonlocalbusiness/static/js/main.58af8b97.chunk.js",
+    "main.js.map": "/brightonlocalbusiness/static/js/main.58af8b97.chunk.js.map",
+    "runtime-main.js": "/brightonlocalbusiness/static/js/runtime-main.9a0591f3.js",
+    "runtime-main.js.map": "/brightonlocalbusiness/static/js/runtime-main.9a0591f3.js.map",
+    "static/css/2.de424728.chunk.css": "/brightonlocalbusiness/static/css/2.de424728.chunk.css",
+    "static/js/2.efe8fe63.chunk.js": "/brightonlocalbusiness/static/js/2.efe8fe63.chunk.js",
+    "static/js/2.efe8fe63.chunk.js.map": "/brightonlocalbusiness/static/js/2.efe8fe63.chunk.js.map",
+    "index.html": "/brightonlocalbusiness/index.html",
+    "precache-manifest.d47a51c93a6ffd76fb0f975d14cbe5d5.js": "/brightonlocalbusiness/precache-manifest.d47a51c93a6ffd76fb0f975d14cbe5d5.js",
+    "service-worker.js": "/brightonlocalbusiness/service-worker.js",
+    "static/css/2.de424728.chunk.css.map": "/brightonlocalbusiness/static/css/2.de424728.chunk.css.map",
+    "static/css/main.7df92152.chunk.css.map": "/brightonlocalbusiness/static/css/main.7df92152.chunk.css.map",
+    "static/js/2.efe8fe63.chunk.js.LICENSE.txt": "/brightonlocalbusiness/static/js/2.efe8fe63.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9a0591f3.js",
+    "static/css/2.de424728.chunk.css",
+    "static/js/2.efe8fe63.chunk.js",
+    "static/css/main.7df92152.chunk.css",
+    "static/js/main.58af8b97.chunk.js"
+  ]
+}
