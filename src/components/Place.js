@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import Col from 'react-bootstrap/Col';
-import Card from 'react-bootstrap/Card';
-import Badge from 'react-bootstrap/Badge';
+import React, { Component } from 'react'
+import Card from 'react-bootstrap/Card'
+import Badge from 'react-bootstrap/Badge'
 import _ from 'underscore';
 
 class Event extends Component {
@@ -14,6 +13,7 @@ class Event extends Component {
 			collection= { this.props.meta.type_delivery.includes("Collection") ? "1" : "" }
 			home_delivery= { this.props.meta.type_delivery.includes("Home Delivery") ? "1" : "" }
 			voucher= { this.props.meta.voucher ? "1" : "" }
+			category= { this.props.meta.category }
 			>
 				<Card.Img variant="top" src={ this.props.meta.pictures } />
 		  		<Card.Body>
