@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import Card from 'react-bootstrap/Card'
-import Badge from 'react-bootstrap/Badge'
-import _ from 'underscore';
+import {
+	Card,
+	Badge
+ } from 'antd'
 
-class Event extends Component {
+class Place extends Component {
 	render() {
 		return (
 			<Card
@@ -38,4 +39,4 @@ class Event extends Component {
 	}
 }
 
-export default Event;
+export default Place;
