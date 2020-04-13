@@ -3,8 +3,10 @@ import {initialPlaces} from '../places.js'
 import Place from './Place.js'
 import {
 	Button,
-	Row
+	Space
 } from 'antd'
+import { Grid, Row } from 'react-flexbox-grid';
+
 
 //import DB from 'taffydb';
 //TOOD use import 
@@ -32,8 +34,9 @@ class PlacesGrid extends Component {
 	}
 	render() {
 		return (
-			<div>
-				<Row>
+			<div class="place_grid">
+
+				<Row align="bottom">
 					<Button type="primary" disabled onClick={() => this.loadPlaces('type_delivery','Home Delivery')}>Home Delivery</Button>
 					<Button type="primary" disabled onClick={() => this.loadPlaces('type_delivery','Collection')}>Collection</Button>
 					<Button type="primary" disabled onClick={() => this.loadPlaces('do_boxes','true')}>Do Boxes</Button>
@@ -42,17 +45,21 @@ class PlacesGrid extends Component {
 					<Button type="primary" disabled onClick={() => this.loadPlaces('category','Coffee & Drinks')}>Coffee & Drinks</Button>
 					<Button type="primary" disabled onClick={() => this.loadPlaces('category','Groceries')}>Groceries</Button>
 				</Row>
-				<div>
-					{this.state.places.map((obj, index) => <Place
-						meta={obj}
-						style={{
-							width: '236px',
-							height: `${index % 2 === 0 ? 4 * 50 : 50 }px`,
-							display: 'block',
-							background: 'rgba(0,0,0,0.7)'
-						}}
-					/>)}
-				</div>
+				<Space>
+					<Grid>
+						<Row gutter={[16, 16]} align="top">
+						{this.state.places.map((obj, index) => <Place
+							meta={obj}
+							style={{
+								width: '236px',
+								height: `${index % 2 === 0 ? 4 * 50 : 50 }px`,
+								display: 'block',
+								background: 'rgba(0,0,0,0.7)'
+							}}
+						/>)}
+						</Row>
+					</Grid>
+				</Space>
 			</div>
 			);
 	}
