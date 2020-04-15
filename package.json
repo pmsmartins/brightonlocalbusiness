@@ -4,9 +4,10 @@
   "private": true,
   "homepage": "http://pmsmartins.github.io/brightonlocalbusiness",
   "dependencies": {
-    "@material-ui/core": "^4.9.10",
-    "@material-ui/icons": "^4.9.1",
-    "clsx": "latest",
+    "bulma": "^0.8.2",
+    "bulma-extensions": "^6.2.7",
+    "lodash": "^4.17.15",
+    "node-sass": "^4.13.1",
     "react": "latest",
     "react-dom": "latest",
     "react-scripts": "latest",

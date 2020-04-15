@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import { initialPlaces } from '../places.js';
+import { chunk } from 'lodash'
 import Place from './Place.js';
-import {
-	Button,
-	GridList
-} from '@material-ui/core/';
-
 
 //import DB from 'taffydb';
 //TOOD use import 
@@ -31,27 +27,33 @@ class PlacesGrid extends Component {
 	}
 
 	render() {
+		var cols = 4, rows = chunk(this.state.places.get(), cols)
+		console.log(rows, this.state.places.get())
 		return (
-			<div class="place_grid">
-				<Button type="primary" disabled onClick={() => this.loadPlaces('type_delivery', 'Home Delivery')}>Home Delivery</Button>
-				<Button type="primary" disabled onClick={() => this.loadPlaces('type_delivery', 'Collection')}>Collection</Button>
-				<Button type="primary" disabled onClick={() => this.loadPlaces('do_boxes', 'true')}>Do Boxes</Button>
-				<Button type="primary" disabled onClick={() => this.loadPlaces('has_online_shop', 'true')}>Has Online Shop</Button>
-				<Button type="primary" disabled onClick={() => this.loadPlaces('category', 'Culture')}>Culture</Button>
-				<Button type="primary" disabled onClick={() => this.loadPlaces('category', 'Coffee & Drinks')}>Coffee & Drinks</Button>
-				<Button type="primary" disabled onClick={() => this.loadPlaces('category', 'Groceries')}>Groceries</Button>
-				<GridList>
-					{this.state.places.map((obj, index) => <Place
-						meta={obj}
-						style={{
-							width: '236px',
-							height: `${index % 2 === 0 ? 4 * 50 : 50}px`,
-							display: 'block',
-							background: 'rgba(0,0,0,0.7)'
-						}}
-					/>)}
-				</GridList>
+			<div className="container">
+				<nav id="filter_bar" className="navbar">
+
+					<div class="field">
+						<input id="switchRtlExample" type="checkbox" name="switchRtlExample" class="switch is-rtl" checked="checked" />
+						<label for="switchRtlExample">Switch example</label>
+					</div>
+					<button className="button is primary is-focused" onClick={() => this.loadPlaces('type_delivery', 'Home Delivery')}>Home Delivery</button>
+					<button className="button is-link is-focused" onClick={() => this.loadPlaces('type_delivery', 'Collection')}>Collection</button>
+					<button className="button is-info is-focused" onClick={() => this.loadPlaces('do_boxes', 'true')}>Do Boxes</button>
+					<button className="button is-success is-focused" onClick={() => this.loadPlaces('has_online_shop', 'true')}>Has Online Shop</button>
+					<button className="button is-danger is-focused" onClick={() => this.loadPlaces('category', 'Culture')}>Culture</button>
+					<button className="button is-warning is-focused" onClick={() => this.loadPlaces('category', 'Coffee & Drinks')}>Coffee & Drinks</button>
+					<button className="button is-focused" onClick={() => this.loadPlaces('category', 'Groceries')}>Groceries</button>
+				</nav>
+				{rows.map((cols) => (
+					<div className="col-lg-12 columns text-center">
+						{cols.map((col, index) => (
+							<Place meta={col} index={index} />
+						))}
+					</div>
+				))}
 			</div>
+
 		);
 	}
 }
