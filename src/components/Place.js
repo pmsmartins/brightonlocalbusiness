@@ -1,43 +1,115 @@
-import React, { Component } from 'react'
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons'
-import { 
-	Card
-} from 'antd'
-import { Col } from 'react-flexbox-grid'
-const { Meta } = Card;
-class Place extends Component {
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import {
+	Card,
+	CardHeader,
+	CardMedia,
+	CardContent,
+	CardActions,
+	Collapse,
+	Avatar,
+	IconButton,
+	Typography,
+} from '@material-ui/core/'
+import { red } from '@material-ui/core/colors';
+import {
+	FavoriteIcon,
+	ShareIcon,
+	ExpandMoreIcon,
+	MoreVertIcon
+} from '@material-ui/icons/Favorite';
+import clsx from 'clsx';
+const useStyles = makeStyles((theme) => ({
+	root: {
+		maxWidth: 345,
+	},
+	media: {
+		height: 0,
+		paddingTop: '56.25%', // 16:9
+	},
+	expand: {
+		transform: 'rotate(0deg)',
+		marginLeft: 'auto',
+		transition: theme.transitions.create('transform', {
+			duration: theme.transitions.duration.shortest,
+		}),
+	},
+	expandOpen: {
+		transform: 'rotate(180deg)',
+	},
+	avatar: {
+		backgroundColor: red[500],
+	},
+}));
+
+function buildBody(props){
 	
+	const classes = useStyles();
+	const [expanded, setExpanded] = React.useState(false);
+
+
+	return (
+		<Card className={classes.root}>
+			<CardHeader
+				avatar={
+					<Avatar aria-label="recipe" className={classes.avatar}>
+						R
+						</Avatar>
+				}
+				action={
+					<IconButton aria-label="settings">
+						<MoreVertIcon />
+					</IconButton>
+				}
+				title={props.meta.name}
+				subheader={props.meta.categories}
+			/>
+			<CardMedia
+				className={classes.media}
+				image={props.meta.pictures}
+				title={props.meta.name}
+			/>
+			<CardContent>
+				<Typography variant="body2" color="textSecondary" component="p">
+					This impressive paella is a perfect party dish and a fun meal to cook together with your
+					guests. Add 1 cup of frozen peas along with the mussels, if you like.
+					</Typography>
+			</CardContent>
+			<CardActions disableSpacing>
+				<IconButton aria-label="add to favorites">
+					<FavoriteIcon />
+				</IconButton>
+				<IconButton aria-label="share">
+					<ShareIcon />
+				</IconButton>
+				<IconButton
+					className={clsx(classes.expand, {
+						[classes.expandOpen]: expanded,
+					})}
+					aria-expanded={expanded}
+					aria-label="show more"
+				>
+					<ExpandMoreIcon />
+				</IconButton>
+			</CardActions>
+			<Collapse in={expanded} timeout="auto" unmountOnExit>
+				<CardContent>
+					<Typography paragraph>Method:</Typography>
+					<Typography paragraph>
+						{props.meta.notes}
+					</Typography>
+				</CardContent>
+			</Collapse>
+		</Card>
+	);
+}
+
+class Place extends Component {
 	render() {
 		return (
-			<Col   xs={6} md={3}>
-				<Card
-
-				style={{ minwidth: 240 }}
-				do_boxes={ this.props.meta.do_boxes ? "1" : "" }
-				recommend= { this.props.meta.do_boxes ? "1" : "" }
-				has_online_shop= { this.props.meta.do_boxes ? "1" : "" }
-				collection= { this.props.meta.type_delivery.includes("Collection") ? "1" : "" }
-				home_delivery= { this.props.meta.type_delivery.includes("Home Delivery") ? "1" : "" }
-				voucher= { this.props.meta.voucher ? "1" : "" }
-				category= { this.props.meta.category }
-				cover={
-					<img
-						alt={ this.props.meta.name }
-						src={ this.props.meta.pictures }
-					/>
-					}
-					actions={[
-						<SettingOutlined key="setting" />,
-						<EditOutlined key="edit" />,
-						<EllipsisOutlined key="ellipsis" />,
-					]}
-				>
-					<Meta
-					title={ this.props.meta.name }
-					description={ this.props.meta.notes.substr(0,100) }
-					/>
-				</Card>
-		  </Col>
+			<div class="place_grid">
+				{buildBody(this.props)}
+			</div>
 		);
 	}
 }

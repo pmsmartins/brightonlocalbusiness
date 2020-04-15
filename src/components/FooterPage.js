@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { Layout } from 'antd';
+import { Container } from '@material-ui/core/';
 
-const { Footer } = Layout;
+const { Footer } = Container;
 
 class FooterPage extends Component {
 	render() {
 		return (
-			<Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+			<div className="logo" />
 		);
 	}
 }
